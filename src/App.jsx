@@ -7,18 +7,18 @@ function Home() {
   const navigate = useNavigate();
   const location = useLocation();
 
-  // Verifica se já existe um CPF na URL
   useEffect(() => {
     const urlParams = new URLSearchParams(location.search);
     const cpfParam = urlParams.get('cpf');
     if (cpfParam) {
-      navigate(`/assentos?cpf=${cpfParam}`);
+      // Força o redirecionamento usando window.location
+      window.location.href = `/assentos?cpf=${cpfParam}`;
     }
-  }, [location, navigate]);
+  }, [location]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    navigate(`/assentos?cpf=${cpf}`);
+    window.location.href = `/assentos?cpf=${cpf}`;
   };
 
   return (
